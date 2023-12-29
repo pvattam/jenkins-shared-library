@@ -24,9 +24,9 @@ def call(){
                 }
             }
 
-            stage ('Release'){
+            stage ('Release Apply'){
                 steps {
-                    echo 'Release'
+                    echo 'Release Apply'
                 }
             }
 
