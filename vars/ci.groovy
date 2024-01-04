@@ -8,6 +8,7 @@ def call(){
         }else {
             env.branch_name = "${env.BRANCH_NAME}"
         }
+        sh 'env'
         stage('Code Checkout'){
             checkout scmGit(
                     branches: [[name: "${branch_name}"]],
@@ -15,6 +16,7 @@ def call(){
             )
             sh 'cat Jenkinsfile'
         }
+
 
         stage('Compile'){}
 
