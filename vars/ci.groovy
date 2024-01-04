@@ -6,9 +6,14 @@ def call(){
         if(env.TAG_NAME ==~ ".*") {
             env.branch_name = "refs/tags/${env.TAG_NAME}"
         }else {
-            env.branch_name = "${env.BRANCH_NAME}"
+            if (env.BRANCH_NAME ==~ "PR-.*"){
+                env.branch_name = "${env.CHANGE_BRANCH}"
+            }else{
+                env.BRANCH_NAME = "${env.BRANCH_NAME}"
+            }
+
         }
-        sh 'env'
+
         stage('Code Checkout'){
             checkout scmGit(
                     branches: [[name: "${branch_name}"]],
