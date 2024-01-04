@@ -13,6 +13,7 @@ def call(){
                     branches: [[name: "${branch_name}"]],
                     userRemoteConfigs: [[url: "https://github.com/pvattam/expense-backend.git"]]
             )
+            sh 'cat Jenkinsfile'
         }
 
         stage('Compile'){}
