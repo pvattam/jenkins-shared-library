@@ -32,7 +32,7 @@ def call(){
         if(env.JOB_BASE_NAME ==~ "PR.*") {
             sh 'echo PR'
             stage('Test Cases'){}
-            stage('Integration Test Cases'){}
+            stage('Code Quality'){}
         }else if(env.BRANCH_NAME == 'main'){
             sh 'echo main'
             stage('Build'){}
@@ -42,13 +42,11 @@ def call(){
             stage('Release App') {}
         }else {
             sh 'echo branch'
-            stage('Test Cases'){}
+            stage('Test Cases'){
+                //sh 'npm test'
+                //These test cases in organization is ideally written and we dont skip this step. Since it is a LAB, we are moving further.
+            }
         }
-//        stage('Code Checkout'){}
-//        stage('Compile'){}
-//        stage('Test Cases'){}
-//        stage('Integration Test Cases'){}
-//        stage('Build'){}
-//        stage('Release App'){}
+
     }
 }
