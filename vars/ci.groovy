@@ -17,7 +17,7 @@ def call(){
         stage('Code Checkout'){
             checkout scmGit(
                     branches: [[name: "${branch_name}"]],
-                    userRemoteConfigs: [[url: "https://github.com/pvattam/expense-backend.git"]]
+                    userRemoteConfigs: [[url: "https://github.com/pvattam/${repo_name}.git"]]
             )
             sh 'cat Jenkinsfile'
         }
