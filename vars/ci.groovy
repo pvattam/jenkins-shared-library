@@ -41,7 +41,7 @@ def call(){
             }
             stage('Code Quality'){
                 //sh 'sonar-scanner -Dsonar.host.url=http://18.215.231.226:9000 -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectKey=expense-backend'
-                print (AWS_SSM_PARAM(param_name 'sonar.token'))
+                print (AWS_SSM_PARAM(param_name: 'sonar.token'))
             }
         }else if(env.BRANCH_NAME == 'main'){
             sh 'echo main'
