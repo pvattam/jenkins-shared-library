@@ -40,8 +40,10 @@ def call(){
                 //sh 'npm test'
             }
             stage('Code Quality'){
-                //sh 'sonar-scanner -Dsonar.host.url=http://18.215.231.226:9000 -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectKey=expense-backend'
-                print (AWS_SSM_PARAM(param_name: 'sonar.token'))
+
+                env.SONAR_TOKEN = AWS_SSM_PARAM(param_name: 'sonar.token')
+                sh 'sonar-scanner -Dsonar.host.url=http://18.215.231.226:9000 -Dsonar.login=${SONAR_TOKEN} -Dsonar.projectKey=expense-backend'
+
             }
         }else if(env.BRANCH_NAME == 'main'){
             sh 'echo main'
