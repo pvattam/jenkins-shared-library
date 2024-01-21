@@ -7,6 +7,7 @@ def call(){
         stages{
 
             stage ('Compile'){
+                expression { BRANCH_NAME == "main"}
                 steps {
                     echo 'Compile'
                 }
@@ -25,6 +26,9 @@ def call(){
             }
 
             stage ('Build'){
+                when{
+                    branch 'main'
+                }
                 steps {
                     echo 'Build'
                 }

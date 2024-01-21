@@ -36,6 +36,7 @@ def call(){
         }else if(env.TAG_NAME ==~ ".*") {
             sh 'echo TAG'
             stage('Build') {
+                sh 'echo ${TAG_NAME} > VERSION'
                 sh 'zip -r ${repo_name}-${TAG_NAME}.zip *'
             }
             stage('Release App') {
